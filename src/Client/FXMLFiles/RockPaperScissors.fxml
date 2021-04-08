@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import java.net.URL?>
+
+<GridPane xmlns:fx="http://javafx.com/fxml" alignment="CENTER"
+          prefHeight="600.0" prefWidth="1000.0" styleClass="simpleDark">
+    <!-- Applying Style Sheet -->
+    <stylesheets>
+        <URL value="@../../SimpleDark.css" />
+    </stylesheets>
+
+    <!-- Selection Ui -->
+    <HBox GridPane.rowIndex="0" GridPane.columnIndex="0" spacing="10">
+        <Button fx:id="rock" styleClass="simpleDarkButton">
+
+        </Button>
+        <Button fx:id="paper" styleClass="simpleDarkButton">
+
+        </Button>
+        <Button fx:id="scissors" styleClass="simpleDarkButton">
+
+        </Button>
+    </HBox>
+</GridPane>

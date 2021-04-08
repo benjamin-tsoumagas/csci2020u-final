@@ -7,6 +7,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import java.time.chrono.MinguoChronology;
+
 public class LoginController {
     @FXML TextField usernameInput;
     //this is just a simple controller class for loading the login screen for player
@@ -36,9 +38,10 @@ public class LoginController {
         try{
             Stage currentStage = (Stage) usernameInput.getScene().getWindow();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLFiles/MainClientUi.fxml"));
+            MainClientController controller = new MainClientController();
+            loader.setController(controller);
 
             currentStage.setScene(new Scene(loader.load()));
-            MainClientController controller = loader.getController();
             controller.initData(username);
         }catch(Exception e){
             e.printStackTrace();
