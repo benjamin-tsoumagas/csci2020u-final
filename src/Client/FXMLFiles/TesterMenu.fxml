@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.layout.GridPane?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<GridPane fx:controller="Client.ClientCreatorController" xmlns:fx="http://javafx.com/fxml"
+          prefHeight="200" prefWidth="500" styleClass="simpleDark" alignment="CENTER" vgap="50">
+    <!-- Applying Style Sheet -->
+    <stylesheets>
+        <URL value="@../../SimpleDark.css" />
+    </stylesheets>
+
+    <!-- Tester Ui -->
+    <Label text="Press Button to Create New Client Window" GridPane.rowIndex="0" GridPane.columnIndex="0" styleClass="simpleDarkTitle"/>
+    <HBox alignment="CENTER" GridPane.rowIndex="1" GridPane.columnIndex="0">
+        <Button text="Create New Client" onAction="#createNewClient" styleClass="simpleDarkButton"/>
+    </HBox>
+</GridPane>

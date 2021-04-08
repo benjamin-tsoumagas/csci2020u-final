@@ -1,0 +1,62 @@
+.buttonsPadding{
+    -fx-padding: 2 5 2 5;
+    -fx-border-insets: 2;
+    -fx-background-color: #111111;
+}
+
+.vBoxPadding{
+    -fx-padding: 0 0 0 0;
+    -fx-background-color: #111111;
+}
+
+.labelStyle{
+    -fx-border-insets: 2;
+    -fx-background-color: #303030;
+    -fx-text-color: #EAEAEA;
+    -fx-text-fill: #EAEAEA;
+}
+
+.simpleDark{
+    -fx-background-color: #303030;
+    -fx-text-color: #EAEAEA;
+    -fx-text-fill: #EAEAEA;
+    -fx-font-size: 12pt;
+}
+
+.simpleGrey{
+    -fx-background-color: #404040;
+    -fx-text-color: #EAEAEA;
+    -fx-text-fill: #EAEAEA;
+    -fx-font-size: 12pt;
+}
+
+.simpleDarkTitle{
+    -fx-background-color: #303030;
+    -fx-text-color: #EAEAEA;
+    -fx-text-fill: #EAEAEA;
+    -fx-font-size: 18pt;
+}
+
+.simpleDarkButton{
+    -fx-background-color: #404040;
+    -fx-text-color: #EAEAEA;
+    -fx-text-fill: #EAEAEA;
+    -fx-font-size: 12pt;
+    -fx-background-radius: 5,4,3,5;
+    -fx-background-insets: 0,1,2,0;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}
+
+.simpleDarkList{
+    -fx-background-color: #303030;
+    -fx-text-color: #EAEAEA;
+    -fx-text-fill: #EAEAEA;
+    -fx-font-size: 12pt;
+}
+
+.warningText{
+    -fx-background-color: #303030;
+    -fx-text-color: #FF802D;
+    -fx-text-fill: #FF802D;
+    -fx-font-size: 12pt;
+}
