@@ -16,7 +16,9 @@ This project was made by Andy Wang, Benjamin Tsoumagas, Matthew Sharp, and Sam S
 5. Open the GitHub link here https://github.com/benjamin-tsoumagas/csci2020u-a1.
 6. Click on the green "Code" button then click on the clipboard to copy the web URL.
 7. Open a command prompt and type 'git clone https://github.com/benjamin-tsoumagas/csci2020u-a1.git (You will need to install Git if you haven't already https://git-scm.com/downloads)
-8. Open this project using IntelliJ once the project is cloned and go to Run>Run 'Main'
+8. Open this project using IntelliJ once the project is cloned and go to Run>Edit Configurations
+9. Set up configurations for ClientTester and ServerTester, ClientTester needs this virtual machine argument: --module-path "***" --add-modules javafx.controls,javafx.fxml
+   *** represents your path to your javafx sdk library
    (For any issues running the project with IntelliJ, please refer to this YouTube video by Bro Code https://youtu.be/Ope4icw6bVk?list=LL)
 
 
