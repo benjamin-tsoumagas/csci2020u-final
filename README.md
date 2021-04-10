@@ -24,7 +24,6 @@ This project was made by Andy Wang, Benjamin Tsoumagas, Matthew Sharp - 10074807
 
 **Other Resources**
 -
-Icon from: https://th.bing.com/th/id/OIP.HbI6T3xeVO2XngKCsX9HRQAAAA?pid=ImgDet&rs=1
--
+Icon from: https://th.bing.com/th/id/OIP.HbI6T3xeVO2XngKCsX9HRQAAAA?pid=ImgDet&rs=1 \
 Rock, Paper and Scissors from: https://www.shutterstock.com/image-vector/rock-scissors-paper-hand-gesture-vector-689530327
 
