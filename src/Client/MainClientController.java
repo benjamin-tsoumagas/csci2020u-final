@@ -18,9 +18,21 @@ public class MainClientController {
     private String username;
     private Stage primaryStage;
 
+    //constants\\
+    private final double buttonFitWidth = 250;
+    private final double buttonFitHeight = 320;
+
     //-- Private Methods --\\
     private void selectAction(String actionName){ // this is the method that gets fired when any of the action buttons are pressed
-
+        if (actionName.equalsIgnoreCase("rock")){
+            System.out.println("Player pressed rock");
+        }else if(actionName.equalsIgnoreCase("paper")){
+            System.out.println("Player pressed paper");
+        }else if(actionName.equalsIgnoreCase("scissors")){
+            System.out.println("Player pressed scissors");
+        }else{
+            System.out.println("No such action "+actionName);
+        }
     }
 
     //-- Controller Methods --\\
@@ -41,9 +53,21 @@ public class MainClientController {
             Button paperButton = (Button) primaryStage.getScene().lookup("#paper");
             Button scissorsButton = (Button) primaryStage.getScene().lookup("#scissors");
 
-            rockButton.setGraphic(new ImageView(new Image("/icon.jpg")));
-            paperButton.setGraphic(new ImageView(new Image("/icon.jpg")));
-            scissorsButton.setGraphic(new ImageView(new Image("/icon.jpg")));
+            //generating image views
+            ImageView rockView = new ImageView(new Image("/Rock.png"));
+            ImageView paperView = new ImageView(new Image("/Paper.png"));
+            ImageView scissorsView = new ImageView(new Image("/Scissors.png"));
+            rockView.setFitWidth(buttonFitWidth);
+            rockView.setFitHeight(buttonFitHeight);
+            paperView.setFitWidth(buttonFitWidth);
+            paperView.setFitHeight(buttonFitHeight);
+            scissorsView.setFitWidth(buttonFitWidth);
+            scissorsView.setFitHeight(buttonFitHeight);
+
+            //adding image view to buttons
+            rockButton.setGraphic(rockView);
+            paperButton.setGraphic(paperView);
+            scissorsButton.setGraphic(scissorsView);
 
             //connecting to action methods
             rockButton.setOnAction((actionEvent -> {selectAction("rock");}));
