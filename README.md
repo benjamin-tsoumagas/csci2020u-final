@@ -1,7 +1,7 @@
 **Project Information**
 -
 This project is a multi-threaded Rock-Paper-Scissors game.
-This project was made by Andy Wang, Benjamin Tsoumagas, Matthew Sharp, and Sam Shard.
+This project was made by Andy Wang, Benjamin Tsoumagas, Matthew Sharp - 100748071, and Sam Shard.
 
 **Improvements**
 -
@@ -25,4 +25,5 @@ This project was made by Andy Wang, Benjamin Tsoumagas, Matthew Sharp, and Sam S
 **Other Resources**
 -
 Icon from: https://th.bing.com/th/id/OIP.HbI6T3xeVO2XngKCsX9HRQAAAA?pid=ImgDet&rs=1
+Rock, Paper and Scissors from: https://www.shutterstock.com/image-vector/rock-scissors-paper-hand-gesture-vector-689530327
 
