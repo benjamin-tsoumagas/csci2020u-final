@@ -11,6 +11,12 @@ import javafx.stage.Stage;
 import jdk.jfr.Event;
 
 import java.beans.EventHandler;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.Socket;
+import java.net.UnknownHostException;
 
 public class MainClientController {
     @FXML Label welcomeLabel;
@@ -18,12 +24,31 @@ public class MainClientController {
     private String username;
     private Stage primaryStage;
 
+    private Socket socket = null; // used to store client socket
+    private PrintWriter networkOut = null; // used to write to socket
+    private BufferedReader networkIn = null; // used to read from socket
+
+    public static String SERVER_ADDRESS = "localhost"; // server address
+    public static int    SERVER_PORT = 16789; // server port
+
     //constants\\
     private final double buttonFitWidth = 250;
     private final double buttonFitHeight = 320;
 
     //-- Private Methods --\\
     private void selectAction(String actionName){ // this is the method that gets fired when any of the action buttons are pressed
+        networkOut.println("GETCLIENTS");
+        try {
+            System.out.println("hello");
+            String line = networkIn.readLine();
+            System.out.println("hi");
+            int id = (new Integer(line)).intValue();
+            if (id >= 2) {
+                System.err.println("Too Many Players");
+            }
+        } catch (IOException e) {
+            System.out.println("IOException while opening a read/write connection");
+        }
         if (actionName.equalsIgnoreCase("rock")){
             System.out.println("Player pressed rock");
         }else if(actionName.equalsIgnoreCase("paper")){
@@ -38,6 +63,19 @@ public class MainClientController {
     //-- Controller Methods --\\
     public void initData(String username){
         this.username = username;
+        try{
+            socket = new Socket(SERVER_ADDRESS, SERVER_PORT); // sets up socket
+        } catch (UnknownHostException e) {
+            System.err.println("Unknown host: "+SERVER_ADDRESS);
+        } catch (IOException e) {
+            System.err.println("IOException while connecting to server: "+SERVER_ADDRESS);
+        }
+        try {
+            networkOut = new PrintWriter(socket.getOutputStream(), true); // sends up writer
+            networkIn = new BufferedReader(new InputStreamReader(socket.getInputStream())); // sets up reader
+        } catch (IOException e) {
+            System.err.println("IOException while opening a read/write connection");
+        }
         welcomeLabel.setText("Welcome to Rock Paper Scissors "+username);
         primaryStage = (Stage) welcomeLabel.getScene().getWindow();
     }

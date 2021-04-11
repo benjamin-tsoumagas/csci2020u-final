@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import java.net.URL?>
+
+<GridPane xmlns:fx="http://javafx.com/fxml" alignment="CENTER"
+          prefHeight="600.0" prefWidth="1000.0" styleClass="simpleDark" vgap="50">
+    <!-- Applying Style Sheet -->
+    <stylesheets>
+        <URL value="@../../SimpleDark.css" />
+    </stylesheets>
+
+    <!-- Selection Ui -->
+    <Label text="Choose your play. Rock Paper or Scissors?" GridPane.rowIndex="0" GridPane.columnIndex="0" alignment="CENTER" styleClass="simpleDarkTitle"/>
+    <HBox GridPane.rowIndex="1" GridPane.columnIndex="0" spacing="10">
+        <Button fx:id="rock" prefWidth="250" styleClass="simpleDarkButton"/>
+        <Button fx:id="paper" prefWidth="250" styleClass="simpleDarkButton"/>
+        <Button fx:id="scissors" prefWidth="250" styleClass="simpleDarkButton"/>
+    </HBox>
+</GridPane>

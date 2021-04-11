@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+
+<!--fx:controller="Client.MainClientController"-->
+<GridPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+          prefHeight="600.0" prefWidth="1000.0" styleClass="simpleDark" alignment="CENTER" vgap="30">
+    <!-- Applying Style Sheet -->
+    <stylesheets>
+        <URL value="@../../SimpleDark.css" />
+    </stylesheets>
+
+    <!-- Home screen Ui -->
+    <Label fx:id="welcomeLabel" GridPane.rowIndex="0" GridPane.columnIndex="0" styleClass="simpleDarkTitle"/>
+    <HBox GridPane.rowIndex="1" GridPane.columnIndex="0" alignment="CENTER">
+        <ImageView>
+            <image>
+                <Image preserveRatio="true" url="@/icon.jpg" />
+            </image>
+        </ImageView>
+    </HBox>
+    <HBox GridPane.rowIndex="2" GridPane.columnIndex="0" alignment="CENTER">
+        <Button onAction="#playGame" text="Play" prefWidth="200" styleClass="simpleDarkButton"/>
+    </HBox>
+    <!--do not worry about the onAction red indications as the controller is manually from LoginController connected-->
+</GridPane>

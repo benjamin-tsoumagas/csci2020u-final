@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+
+<GridPane xmlns:fx="http://javafx.com/fxml" styleClass="simpleDark"
+          prefHeight="100.0" prefWidth="300.0" alignment="CENTER">
+    <!-- Applying Style Sheet -->
+    <stylesheets>
+        <URL value="@../../SimpleDark.css" />
+    </stylesheets>
+
+    <!-- Warning Ui -->
+    <Label fx:id="warningLabel" GridPane.rowIndex="0" GridPane.columnIndex="0" styleClass="warningText"/>
+</GridPane>

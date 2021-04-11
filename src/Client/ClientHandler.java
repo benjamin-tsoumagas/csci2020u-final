@@ -80,6 +80,7 @@ public class ClientHandler extends  Thread{
             synchronized(this){
                 moves.addElement("["+strUSR+"]: "+args);
             }
+            out.println("200 Move was set");
             return false;
         } else if (command.equalsIgnoreCase("GETMOVE")){
             int id = (new Integer(args)).intValue();
@@ -102,12 +103,14 @@ public class ClientHandler extends  Thread{
                     added = false;
                 }
             }
+            out.println("200 Wins were set");
             return false;
         } else if (command.equalsIgnoreCase("GETWIN")){
             out.println(scores.get(args));
             return false;
         } else if (command.equalsIgnoreCase("GETCLIENTS")){
-            out.println(currentClients);
+            String clients = String.valueOf(currentClients);
+            out.println(clients);
             return false;
         } else if (command.equalsIgnoreCase("GETSTATE")){
             out.println(isActive);
@@ -122,6 +125,7 @@ public class ClientHandler extends  Thread{
             Map<String, Integer> scores = null;
             Boolean isActive = false;
             Boolean added = null;
+            out.println("200 Client Has Reset System");
             return true;
         } else if (command.equalsIgnoreCase("LOGOUT")){
             out.println("200 Client Has Logged Out");

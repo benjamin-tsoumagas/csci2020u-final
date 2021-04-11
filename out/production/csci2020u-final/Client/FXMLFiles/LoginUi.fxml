@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+
+<GridPane xmlns:fx="http://javafx.com/fxml" fx:controller="Client.LoginController"
+            prefHeight="300.0" prefWidth="600.0" vgap="20" styleClass="simpleDark" alignment="CENTER">
+    <!-- Applying Style Sheet -->
+    <stylesheets>
+        <URL value="@../../SimpleDark.css" />
+    </stylesheets>
+
+    <!-- Login Ui -->
+    <Label text="Welcome to Rock Paper Scissors" GridPane.rowIndex="0" GridPane.columnIndex="0" styleClass="simpleDarkTitle"/>
+    <HBox alignment="CENTER" GridPane.rowIndex="1" GridPane.columnIndex="0">
+        <Label text="Username:" styleClass="simpleDark"/>
+        <TextField promptText="display name" fx:id="usernameInput" styleClass="simpleGrey"/>
+    </HBox>
+    <HBox alignment="CENTER" GridPane.rowIndex="2" GridPane.columnIndex="0">
+        <Button text="Login" onAction="#login" styleClass="simpleDarkButton"/>
+    </HBox>
+</GridPane>
