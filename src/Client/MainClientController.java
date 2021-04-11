@@ -38,11 +38,11 @@ public class MainClientController {
     //-- Private Methods --\\
     private void selectAction(String actionName){ // this is the method that gets fired when any of the action buttons are pressed
         networkOut.println("GETCLIENTS");
+        int id = -1;
         try {
             System.out.println("hello");
-            String line = networkIn.readLine();
-            System.out.println("hi");
-            int id = (new Integer(line)).intValue();
+            id = networkIn.read();
+            System.out.println(id);
             if (id >= 2) {
                 System.err.println("Too Many Players");
             }

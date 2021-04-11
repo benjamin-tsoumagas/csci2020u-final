@@ -25,7 +25,7 @@ public class ClientHandler extends  Thread{
         isActive = true;
         added = false;
         try {
-            out = new PrintWriter(socket.getOutputStream());
+            out = new PrintWriter(socket.getOutputStream(), true);
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         } catch (IOException e) {
             System.err.println("IOException while opening a read/write connection");
@@ -109,8 +109,7 @@ public class ClientHandler extends  Thread{
             out.println(scores.get(args));
             return false;
         } else if (command.equalsIgnoreCase("GETCLIENTS")){
-            String clients = String.valueOf(currentClients);
-            out.println(clients);
+            out.println(currentClients);
             return false;
         } else if (command.equalsIgnoreCase("GETSTATE")){
             out.println(isActive);
