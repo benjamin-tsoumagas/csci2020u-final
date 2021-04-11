@@ -109,6 +109,7 @@ public class ClientHandler extends  Thread{
             out.println(scores.get(args));
             return false;
         } else if (command.equalsIgnoreCase("GETCLIENTS")){
+            System.out.println(currentClients);
             out.println(currentClients);
             return false;
         } else if (command.equalsIgnoreCase("GETSTATE")){
