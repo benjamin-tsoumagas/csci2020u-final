@@ -26,7 +26,7 @@ public class ServerTester {
             while(true){
                 clientSocket = serverSocket.accept(); // sets up client socket
                 System.out.println("Rock/Paper/Scissors Client connected.");
-                threads[numClients] = new ClientHandler(clientSocket, moves); // creates new handler connection
+                threads[numClients] = new ClientHandler(clientSocket, moves, numClients); // creates new handler connection
                 threads[numClients].start(); // starts new handler connection
                 numClients++; // increments number of clients
             }

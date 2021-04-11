@@ -13,17 +13,16 @@ public class ClientHandler extends  Thread{
     protected String strUSR = null;
     protected Map<String, Integer> scores = null;
     protected Boolean isActive = null;
-    protected Boolean added = null;
 
 
 
-    public ClientHandler(Socket socket, Vector moves) {
+    public ClientHandler(Socket socket, Vector moves, int currentClients) {
         super();
         this.socket = socket;
         this.moves = moves;
+        this.currentClients = currentClients;
         scores = new TreeMap<>();
         isActive = true;
-        added = false;
         try {
             out = new PrintWriter(socket.getOutputStream(), true);
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
@@ -85,23 +84,14 @@ public class ClientHandler extends  Thread{
         } else if (command.equalsIgnoreCase("GETMOVE")){
             int id = (new Integer(args)).intValue();
             String msg = null;
-            int size = moves.size();
-            if (id%2 == 0){
-                msg = (String)moves.elementAt(size-2);
-            } else {
-                msg = (String)moves.elementAt(size-1);
-            }
+            msg = (String)moves.elementAt(id);
             out.println(msg);
             return false;
         } else if (command.equalsIgnoreCase("SETWIN")) {
             synchronized (this) {
-                if (!added){
-                    added = true;
-                } else {
-                    int wins = scores.get(args);
-                    scores.put(args, wins++);
-                    added = false;
-                }
+                int wins = scores.get(args);
+                System.out.print(wins++);
+                scores.put(args, wins++);
             }
             out.println("200 Wins were set");
             return false;

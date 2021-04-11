@@ -17,6 +17,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.StringTokenizer;
 
 public class MainClientController {
     @FXML Label welcomeLabel;
@@ -27,36 +28,102 @@ public class MainClientController {
     private Socket socket = null; // used to store client socket
     private PrintWriter networkOut = null; // used to write to socket
     private BufferedReader networkIn = null; // used to read from socket
-
-    public static String SERVER_ADDRESS = "localhost"; // server address
-    public static int    SERVER_PORT = 16789; // server port
+    private String winner = null;
+    private Boolean first = true;
 
     //constants\\
     private final double buttonFitWidth = 250;
     private final double buttonFitHeight = 320;
+    public static String SERVER_ADDRESS = "localhost"; // server address
+    public static int    SERVER_PORT = 16789; // server port
 
     //-- Private Methods --\\
     private void selectAction(String actionName){ // this is the method that gets fired when any of the action buttons are pressed
-        networkOut.println("GETCLIENTS");
-        int id = -1;
-        String line = null;
-        try {
-            System.out.println("hello");
-            line = networkIn.readLine();
-            id = (new Integer(line)).intValue();
-            if (id >= 2) {
-                System.err.println("Too Many Players");
+        if (actionName.equalsIgnoreCase("rock") || actionName.equalsIgnoreCase("paper") || actionName.equalsIgnoreCase("scissors")){
+            networkOut.println("SETMOVE " + actionName);
+            try {
+                System.out.println(networkIn.readLine());
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        } catch (IOException e) {
-            System.out.println("IOException while opening a read/write connection");
-        }
-        if (actionName.equalsIgnoreCase("rock")){
-            System.out.println("Player pressed rock");
-        }else if(actionName.equalsIgnoreCase("paper")){
-            System.out.println("Player pressed paper");
-        }else if(actionName.equalsIgnoreCase("scissors")){
-            System.out.println("Player pressed scissors");
-        }else{
+        } else if (actionName.equalsIgnoreCase("results")) {
+            networkOut.println("GETSIZE");
+            String line = null;
+            String[] move = new String[2];
+            String[] players = new String[2];
+            int id = -1;
+            try {
+                line = networkIn.readLine();
+                id = (new Integer(line)).intValue();
+                if (id%2==0){
+                    networkOut.println("GETMOVE " + (id-2));
+                    move[0] = networkIn.readLine();
+                    networkOut.println("GETMOVE " + (id-1));
+                    move[1] = networkIn.readLine();
+
+                    System.out.println(move[0] + "\n" + move[1]);
+
+                    int index = move[0].indexOf('[')+1;
+                    int index2 = move[0].indexOf(']');
+                    players[0] = move[0].substring(index, index2);
+
+                    index = move[0].indexOf(':')+2;
+                    move[0] = move[0].substring(index);
+
+                    index = move[1].indexOf('[')+1;
+                    index2 = move[1].indexOf(']');
+                    players[1] = move[1].substring(index, index2);
+
+                    index = move[1].indexOf(':')+2;
+                    move[1] = move[1].substring(index);
+
+                    if (first) {
+                        if (players[0].equalsIgnoreCase(username)){
+                            networkOut.println("SETUSR " + players[1]);
+                            String in = networkIn.readLine();
+                        } else if (players[1].equalsIgnoreCase(username)){
+                            networkOut.println("SETUSR " + players[0]);
+                            String in = networkIn.readLine();
+                        }
+                        first = false;
+                    }
+
+                    if ((move[0].equalsIgnoreCase("paper") && move[1].equalsIgnoreCase("rock")) ||
+                       (move[0].equalsIgnoreCase("rock") && move[1].equalsIgnoreCase("scissors")) ||
+                       (move[0].equalsIgnoreCase("scissors") && move[1].equalsIgnoreCase("paper"))) {
+                        winner = players[0];
+                        System.out.println("The winner of the round is: " + winner);
+                        networkOut.println("SETWIN " + players[0]);
+                        try {
+                            System.out.println(networkIn.readLine());
+                            networkOut.println("GETWIN " + players[0]);
+                            System.out.println(networkIn.readLine());
+                        } catch (IOException e) {
+                            System.err.println("Error reading from Handler");
+                        }
+                    } else if (((move[1].equalsIgnoreCase("paper") && move[0].equalsIgnoreCase("rock")) ||
+                            (move[1].equalsIgnoreCase("rock") && move[0].equalsIgnoreCase("scissors")) ||
+                            (move[1].equalsIgnoreCase("scissors") && move[0].equalsIgnoreCase("paper")))) {
+                        winner = players[1];
+                        System.out.println("The winner of the round is: " + winner);
+                        networkOut.println("SETWIN " + players[1]);
+                        try {
+                            System.out.println(networkIn.readLine());
+                            networkOut.println("GETWIN " + players[1]);
+                            System.out.println(networkIn.readLine());
+                        } catch (IOException e) {
+                            System.err.println("Error reading from Handler");
+                        }
+                    } else {
+                        System.out.println("Draw!");
+                    }
+                } else {
+                    System.err.println("Please wait until the other player has made a move");
+                }
+            } catch (IOException e) {
+                System.err.println("Error reading from Handler");
+            }
+        } else {
             System.out.println("No such action "+actionName);
         }
     }
@@ -64,6 +131,7 @@ public class MainClientController {
     //-- Controller Methods --\\
     public void initData(String username){
         this.username = username;
+
         try{
             socket = new Socket(SERVER_ADDRESS, SERVER_PORT); // sets up socket
         } catch (UnknownHostException e) {
@@ -77,6 +145,24 @@ public class MainClientController {
         } catch (IOException e) {
             System.err.println("IOException while opening a read/write connection");
         }
+
+        networkOut.println("GETCLIENTS");
+        int id = -1;
+        String line = null;
+        try {
+            line = networkIn.readLine();
+            id = (new Integer(line)).intValue();
+            if (id >= 4) {
+                System.err.println("Too Many Players");
+                System.exit(0);
+            } else {
+                networkOut.println("SETUSR " + username);
+                System.out.println(networkIn.readLine());
+            }
+        } catch (IOException e) {
+            System.err.println("IOException while opening a read/write connection");
+        }
+
         welcomeLabel.setText("Welcome to Rock Paper Scissors "+username);
         primaryStage = (Stage) welcomeLabel.getScene().getWindow();
     }
@@ -91,6 +177,7 @@ public class MainClientController {
             Button rockButton = (Button) primaryStage.getScene().lookup("#rock");
             Button paperButton = (Button) primaryStage.getScene().lookup("#paper");
             Button scissorsButton = (Button) primaryStage.getScene().lookup("#scissors");
+            Button resultsButton = (Button) primaryStage.getScene().lookup("#results");
 
             //generating image views
             ImageView rockView = new ImageView(new Image("/Rock.png"));
@@ -112,6 +199,7 @@ public class MainClientController {
             rockButton.setOnAction((actionEvent -> {selectAction("rock");}));
             paperButton.setOnAction((actionEvent -> {selectAction("paper");}));
             scissorsButton.setOnAction((actionEvent -> {selectAction("scissors");}));
+            resultsButton.setOnAction((action -> {selectAction("results");}));
         }catch (Exception e) {
             e.printStackTrace();
         }
