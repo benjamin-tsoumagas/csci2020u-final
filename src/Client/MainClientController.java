@@ -77,6 +77,7 @@ public class MainClientController {
                     index = move[1].indexOf(':')+2;
                     move[1] = move[1].substring(index);
 
+                    // Conditional to set opponent in local instance
                     if (first) {
                         if (players[0].equalsIgnoreCase(username)){
                             networkOut.println("SETUSR " + players[1]);
