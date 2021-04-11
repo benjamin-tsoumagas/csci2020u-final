@@ -125,6 +125,8 @@ public class MainClientController {
             } catch (IOException e) {
                 System.err.println("Error reading from Handler");
             }
+            //save the outcome of the current round and win history to gameLog.txt
+            save(players);
         } else {
             System.out.println("No such action "+actionName);
         }
@@ -204,6 +206,38 @@ public class MainClientController {
             resultsButton.setOnAction((action -> {selectAction("results");}));
         }catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    public void save(String[] players){
+        String filename = "gameLog.txt";
+        try{
+            PrintWriter output = new PrintWriter(filename);
+            //winner global variable is accessed
+            String line = "The Winner of this Round is: " + winner +"\n";
+            //Server needed to get wins for player 1
+            networkOut.println("GETWIN " + players[0]);
+            String player1Wins =  networkIn.readLine();
+            line += players[0] + " has " + player1Wins + " wins.\n";
+
+            //Server needed to get wins for player 1
+            networkOut.println("GETWIN " + players[1]);
+            String player2Wins =  networkIn.readLine();
+            line += players[1] + " has " + player2Wins + " wins.";
+            //"Line 1\nLine 2 (2nd last line)\nLine 3.  This is the last line.";
+            output.println(line);
+			/*while (keepGoing) {
+				// update line with new data
+				output.println(line);
+				System.out.println(line);
+				// update keepGoing, if no more data to save
+				if(line == null){
+					keepGoing = false;
+				}
+			}*/
+            output.close();
+        }catch(IOException e) {
+            System.err.printf("File Error: %s\n", e.getMessage());
         }
     }
 }
