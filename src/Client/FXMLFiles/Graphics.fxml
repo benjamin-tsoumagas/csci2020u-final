@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+<GridPane xmlns:fx="http://javafx.com/fxml"
+          prefHeight="600" prefWidth="1000" styleClass="simpleDark" alignment="CENTER" vgap="50">
+    <!-- Applying Style Sheet -->
+        <stylesheets>
+            <URL value="@../../SimpleDark.css" />
+        </stylesheets>
+
+    <!-- Header -->
+    <HBox alignment="CENTER" GridPane.rowIndex="0" GridPane.columnIndex="0">
+        <Label text="Game Results:" style="-fx-font-size: 80;" styleClass="simpleDarkTitle"/>
+    </HBox>
+    <!-- PVP -->
+    <HBox alignment="CENTER" GridPane.rowIndex="1" spacing = "100">
+        <HBox GridPane.columnIndex="0" spacing="100">
+            <ImageView>
+                <image>
+                    <Image fx:id = "Player1" url="@/Paper.png" preserveRatio="true"/>
+                </image>
+            </ImageView>
+        </HBox>
+        <VBox  alignment="CENTER" GridPane.columnIndex="1">
+            <Label text="Versus" style="-fx-font-size: 40;" styleClass="simpleDarkTitle"/>
+        </VBox>
+        <HBox GridPane.columnIndex="2">
+            <ImageView>
+                <image>
+                    <Image fx:id = "Player2" url="@/Scissors.png" preserveRatio="true"/>
+                </image>
+            </ImageView>
+        </HBox>
+    </HBox>
+    <!-- Result -->
+    <HBox alignment="CENTER" GridPane.rowIndex="2" GridPane.columnIndex="0">
+        <Label fx:id="outcome" text="Bottom Text"  style="-fx-font-size: 40;" styleClass="simpleDarkTitle"/>
+    </HBox>
+    <HBox alignment="CENTER" GridPane.rowIndex="3" GridPane.columnIndex="0">
+        <Button text="Exit" onAction="#exit" styleClass="simpleDarkButton"/>
+    </HBox>
+</GridPane>
