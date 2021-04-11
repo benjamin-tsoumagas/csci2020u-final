@@ -21,6 +21,6 @@
     </HBox>
 
     <HBox GridPane.rowIndex="2" GridPane.columnIndex="0" spacing="10">
-        <Button fx:id="results" prefWidth="250" styleClass="simpleDarkButton" text="View Results"/>
+        <Button fx:id="results" prefWidth="250" styleClass="simpleDarkButton" text = "View Results"/>
     </HBox>
 </GridPane>

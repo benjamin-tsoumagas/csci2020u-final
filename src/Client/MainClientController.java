@@ -117,6 +117,7 @@ public class MainClientController {
                         }
                     } else {
                         System.out.println("Draw!");
+                        winner = "Draw";
                     }
                 } else {
                     System.err.println("Please wait until the other player has made a move");
