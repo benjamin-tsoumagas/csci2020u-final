@@ -80,10 +80,10 @@ public class MainClientController {
                     // Conditional to set opponent in local instance
                     if (first) {
                         if (players[0].equalsIgnoreCase(username)){
-                            networkOut.println("SETUSR " + players[1]);
+                            networkOut.println("SETOP " + players[1]);
                             String in = networkIn.readLine();
                         } else if (players[1].equalsIgnoreCase(username)){
-                            networkOut.println("SETUSR " + players[0]);
+                            networkOut.println("SETOP " + players[0]);
                             String in = networkIn.readLine();
                         }
                         first = false;

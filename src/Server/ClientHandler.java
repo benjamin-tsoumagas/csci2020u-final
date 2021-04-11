@@ -75,6 +75,13 @@ public class ClientHandler extends  Thread{
         } else if (command.equalsIgnoreCase("GETUSR")){
             out.println(strUSR);
             return false;
+        } else if (command.equalsIgnoreCase("SETOP")) {
+            synchronized(this){
+                scores.put(args, 0);
+                currentClients++;
+            }
+            out.println("200 Opponent Set");
+            return false;
         } else if (command.equalsIgnoreCase("SETMOVE")){
             synchronized(this){
                 moves.addElement("["+strUSR+"]: "+args);
