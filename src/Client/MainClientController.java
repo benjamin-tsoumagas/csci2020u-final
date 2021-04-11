@@ -56,6 +56,7 @@ public class MainClientController {
                 line = networkIn.readLine();
                 id = (new Integer(line)).intValue();
                 if (id%2==0){
+                    primaryStage.close();
                     networkOut.println("GETMOVE " + (id-2));
                     move[0] = networkIn.readLine();
                     networkOut.println("GETMOVE " + (id-1));
@@ -224,17 +225,7 @@ public class MainClientController {
             networkOut.println("GETWIN " + players[1]);
             String player2Wins =  networkIn.readLine();
             line += players[1] + " has " + player2Wins + " wins.";
-            //"Line 1\nLine 2 (2nd last line)\nLine 3.  This is the last line.";
             output.println(line);
-			/*while (keepGoing) {
-				// update line with new data
-				output.println(line);
-				System.out.println(line);
-				// update keepGoing, if no more data to save
-				if(line == null){
-					keepGoing = false;
-				}
-			}*/
             output.close();
         }catch(IOException e) {
             System.err.printf("File Error: %s\n", e.getMessage());
