@@ -40,7 +40,8 @@
     <HBox alignment="CENTER" GridPane.rowIndex="2" GridPane.columnIndex="0">
         <Label fx:id="outcome" text="Bottom Text"  style="-fx-font-size: 40;" styleClass="simpleDarkTitle"/>
     </HBox>
-    <HBox alignment="CENTER" GridPane.rowIndex="3" GridPane.columnIndex="0">
-        <Button text="Exit" fx:id="exit" styleClass="simpleDarkButton"/> <!--onAction="#exit"-->
+    <HBox alignment="CENTER" GridPane.rowIndex="3" GridPane.columnIndex="0" spacing="20">
+        <Button text="New Round" fx:id="newRound" styleClass="simpleDarkButton"/>
+        <Button text="Exit" fx:id="exit" styleClass="simpleDarkButton"/>
     </HBox>
 </GridPane>

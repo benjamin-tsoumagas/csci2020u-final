@@ -30,6 +30,8 @@ public class MainClientController {
     private BufferedReader networkIn = null; // used to read from socket
     private String winner = null;
     private String[] move = new String[2];
+    private String[] players = new String[2];
+    private Boolean validNames = true;
     private Boolean first = true;
 
     //constants\\
@@ -51,13 +53,11 @@ public class MainClientController {
             networkOut.println("GETSIZE");
             String line = null;
 
-            String[] players = new String[2];
             int id = -1;
             try {
                 line = networkIn.readLine();
                 id = (new Integer(line)).intValue();
                 if (id%2==0){
-                    primaryStage.close();
                     networkOut.println("GETMOVE " + (id-2));
                     move[0] = networkIn.readLine();
                     networkOut.println("GETMOVE " + (id-1));
@@ -184,6 +184,7 @@ public class MainClientController {
             Label outcome = (Label) primaryStage.getScene().lookup("#outcome");
             ImageView player1 = (ImageView) primaryStage.getScene().lookup("#Player1");
             ImageView player2 = (ImageView) primaryStage.getScene().lookup("#Player2");
+            Button newRoundButton = (Button) primaryStage.getScene().lookup("#newRound");
             Button exitButton = (Button) primaryStage.getScene().lookup("#exit");
 
             //generating images
@@ -191,28 +192,23 @@ public class MainClientController {
             Image paper = new Image("/Paper.png");
             Image scissors = new Image("/Scissors.png");
 
-            //System.out.println(move[0]);
-            //System.out.println(move[1]);
+            //Change image based on player choice
+            if(move[0].equalsIgnoreCase("rock")){
+                player1.setImage(rock);
+            } else if(move[0].equalsIgnoreCase("paper")){
+                player1.setImage(paper);
+            } else {
+                player1.setImage(scissors);
+            }
 
-            //Make these change based on player choice
-            //Need to properly access move array
-//            if(move[0].equalsIgnoreCase("rock")){
-//                player1.setImage(rock);
-//            } else if(move[0].equalsIgnoreCase("paper")){
-//                player1.setImage(paper);
-//            } else {
-//                player1.setImage(scissors);
-//            }
-//
-//            if(move[1].equalsIgnoreCase("rock")){
-//                player2.setImage(rock);
-//            } else if(move[1].equalsIgnoreCase("paper")){
-//                player2.setImage(paper);
-//            } else {
-//                player2.setImage(scissors);
-//            }
-            player1.setImage(rock);
-            player2.setImage(paper);
+            if(move[1].equalsIgnoreCase("rock")){
+                player2.setImage(rock);
+            } else if(move[1].equalsIgnoreCase("paper")){
+                player2.setImage(paper);
+            } else {
+                player2.setImage(scissors);
+            }
+
             player1.setFitHeight(buttonFitHeight);
             player1.setFitWidth(buttonFitWidth);
             player2.setFitHeight(buttonFitHeight);
@@ -225,11 +221,16 @@ public class MainClientController {
             } else {
                 outcome.setText(winner + " wins!");
             }
+            //Add exit and save
 
             //Switch back to RPS screen after Graphics screen
-            exitButton.setOnAction((action -> {
-                //System.exit(0);
+            newRoundButton.setOnAction((action -> {
                 playGame();
+            }));
+
+            //Close both player clients
+            exitButton.setOnAction((action -> {
+                System.exit(0);
             }));
 
         } catch (IOException e) {
@@ -280,7 +281,12 @@ public class MainClientController {
         try{
             PrintWriter output = new PrintWriter(filename);
             //winner global variable is accessed
-            String line = "The Winner of this Round is: " + winner +"\n";
+            String line;
+            if(winner.equalsIgnoreCase("Draw")){
+                line = "This round is a draw \n";
+            } else {
+                line = "The Winner of this Round is: " + winner + "\n";
+            }
             //Server needed to get wins for player 1
             networkOut.println("GETWIN " + players[0]);
             String player1Wins =  networkIn.readLine();
