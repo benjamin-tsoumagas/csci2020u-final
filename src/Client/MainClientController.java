@@ -127,6 +127,7 @@ public class MainClientController {
                 System.err.println("Error reading from Handler");
             }
             //save the outcome of the current round and win history to gameLog.txt
+            //openGraphics();
             save(players);
         } else {
             System.out.println("No such action "+actionName);
@@ -184,12 +185,27 @@ public class MainClientController {
             ImageView player2 = (ImageView) primaryStage.getScene().lookup("#Player2");
             Button exitButton = (Button) primaryStage.getScene().lookup("#exit");
 
-            //generating image views
-            ImageView rockView = new ImageView(new Image("/Rock.png"));
-            ImageView paperView = new ImageView(new Image("/Paper.png"));
-            ImageView scissorsView = new ImageView(new Image("/Scissors.png"));
+            //generating images
+            Image Rock = new Image("/Rock.png");
+            Image Paper = new Image("/Paper.png");
+            Image Scissors = new Image("/Scissors.png");
 
-            exitButton.setOnAction((action -> {System.exit(0);}));
+            //Make these change based on player choice
+            player1.setImage(Rock);
+            player2.setImage(Paper);
+
+            //Set label text dictating the winner
+            if(winner.equals("Draw")){
+                outcome.setText("Draw");
+            } else {
+                outcome.setText(winner + " wins!");
+            }
+
+            //Switch back to RPS screen after Graphics screen
+            exitButton.setOnAction((action -> {
+                //System.exit(0);
+                playGame();
+            }));
 
         } catch (IOException e) {
             e.printStackTrace();
