@@ -121,15 +121,15 @@ public class MainClientController {
                         System.out.println("Draw!");
                         winner = "Draw";
                     }
+                    //save the outcome of the current round and win history to gameLog.txt
+                    openGraphics();
+                    save(players);
                 } else {
                     System.err.println("Please wait until the other player has made a move");
                 }
             } catch (IOException e) {
                 System.err.println("Error reading from Handler");
             }
-            //save the outcome of the current round and win history to gameLog.txt
-            openGraphics();
-            save(players);
         } else {
             System.out.println("No such action "+actionName);
         }
@@ -209,11 +209,11 @@ public class MainClientController {
                 player2.setImage(scissors);
             }
 
+            //Making buttons consistent size
             player1.setFitHeight(buttonFitHeight);
             player1.setFitWidth(buttonFitWidth);
             player2.setFitHeight(buttonFitHeight);
             player2.setFitWidth(buttonFitWidth);
-
 
             //Set label text dictating the winner
             if(winner == "Draw"){
@@ -221,7 +221,6 @@ public class MainClientController {
             } else {
                 outcome.setText(winner + " wins!");
             }
-            //Add exit and save
 
             //Switch back to RPS screen after Graphics screen
             newRoundButton.setOnAction((action -> {
@@ -230,7 +229,7 @@ public class MainClientController {
 
             //Close both player clients
             exitButton.setOnAction((action -> {
-                System.exit(0);
+                primaryStage.close();
             }));
 
         } catch (IOException e) {
