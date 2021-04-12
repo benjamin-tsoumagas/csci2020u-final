@@ -178,9 +178,18 @@ public class MainClientController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLFiles/Graphics.fxml"));
             primaryStage.setScene(new Scene(loader.load()));
 
+            //getting the buttons to apply images through code
             Label outcome = (Label) primaryStage.getScene().lookup("#outcome");
             ImageView player1 = (ImageView) primaryStage.getScene().lookup("#Player1");
             ImageView player2 = (ImageView) primaryStage.getScene().lookup("#Player2");
+            Button exitButton = (Button) primaryStage.getScene().lookup("#exit");
+
+            //generating image views
+            ImageView rockView = new ImageView(new Image("/Rock.png"));
+            ImageView paperView = new ImageView(new Image("/Paper.png"));
+            ImageView scissorsView = new ImageView(new Image("/Scissors.png"));
+
+            exitButton.setOnAction((action -> {System.exit(0);}));
 
         } catch (IOException e) {
             e.printStackTrace();
