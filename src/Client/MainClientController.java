@@ -172,6 +172,21 @@ public class MainClientController {
         primaryStage = (Stage) welcomeLabel.getScene().getWindow();
     }
 
+    public void openGraphics(){
+        //method is fired when game is over
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLFiles/Graphics.fxml"));
+            primaryStage.setScene(new Scene(loader.load()));
+
+            Label outcome = (Label) primaryStage.getScene().lookup("#outcome");
+            ImageView player1 = (ImageView) primaryStage.getScene().lookup("#Player1");
+            ImageView player2 = (ImageView) primaryStage.getScene().lookup("#Player2");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void playGame(){
         //method is fired when button is pressed
         try{

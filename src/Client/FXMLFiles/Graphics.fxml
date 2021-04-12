@@ -19,9 +19,9 @@
     <!-- PVP -->
     <HBox alignment="CENTER" GridPane.rowIndex="1" spacing = "100">
         <HBox GridPane.columnIndex="0" spacing="100">
-            <ImageView>
+            <ImageView fx:id = "Player1">
                 <image>
-                    <Image fx:id = "Player1" url="@/Paper.png" preserveRatio="true"/>
+                    <Image  url="@/Paper.png" preserveRatio="true"/>
                 </image>
             </ImageView>
         </HBox>
@@ -29,9 +29,9 @@
             <Label text="Versus" style="-fx-font-size: 40;" styleClass="simpleDarkTitle"/>
         </VBox>
         <HBox GridPane.columnIndex="2">
-            <ImageView>
+            <ImageView fx:id = "Player2">
                 <image>
-                    <Image fx:id = "Player2" url="@/Scissors.png" preserveRatio="true"/>
+                    <Image url="@/Scissors.png" preserveRatio="true"/>
                 </image>
             </ImageView>
         </HBox>
