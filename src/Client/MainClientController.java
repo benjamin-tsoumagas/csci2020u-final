@@ -29,6 +29,7 @@ public class MainClientController {
     private PrintWriter networkOut = null; // used to write to socket
     private BufferedReader networkIn = null; // used to read from socket
     private String winner = null;
+    private String[] move = new String[2];
     private Boolean first = true;
 
     //constants\\
@@ -49,7 +50,7 @@ public class MainClientController {
         } else if (actionName.equalsIgnoreCase("results")) {
             networkOut.println("GETSIZE");
             String line = null;
-            String[] move = new String[2];
+
             String[] players = new String[2];
             int id = -1;
             try {
@@ -127,7 +128,7 @@ public class MainClientController {
                 System.err.println("Error reading from Handler");
             }
             //save the outcome of the current round and win history to gameLog.txt
-            //openGraphics();
+            openGraphics();
             save(players);
         } else {
             System.out.println("No such action "+actionName);
@@ -186,16 +187,40 @@ public class MainClientController {
             Button exitButton = (Button) primaryStage.getScene().lookup("#exit");
 
             //generating images
-            Image Rock = new Image("/Rock.png");
-            Image Paper = new Image("/Paper.png");
-            Image Scissors = new Image("/Scissors.png");
+            Image rock = new Image("/Rock.png");
+            Image paper = new Image("/Paper.png");
+            Image scissors = new Image("/Scissors.png");
+
+            //System.out.println(move[0]);
+            //System.out.println(move[1]);
 
             //Make these change based on player choice
-            player1.setImage(Rock);
-            player2.setImage(Paper);
+            //Need to properly access move array
+//            if(move[0].equalsIgnoreCase("rock")){
+//                player1.setImage(rock);
+//            } else if(move[0].equalsIgnoreCase("paper")){
+//                player1.setImage(paper);
+//            } else {
+//                player1.setImage(scissors);
+//            }
+//
+//            if(move[1].equalsIgnoreCase("rock")){
+//                player2.setImage(rock);
+//            } else if(move[1].equalsIgnoreCase("paper")){
+//                player2.setImage(paper);
+//            } else {
+//                player2.setImage(scissors);
+//            }
+            player1.setImage(rock);
+            player2.setImage(paper);
+            player1.setFitHeight(buttonFitHeight);
+            player1.setFitWidth(buttonFitWidth);
+            player2.setFitHeight(buttonFitHeight);
+            player2.setFitWidth(buttonFitWidth);
+
 
             //Set label text dictating the winner
-            if(winner.equals("Draw")){
+            if(winner == "Draw"){
                 outcome.setText("Draw");
             } else {
                 outcome.setText(winner + " wins!");

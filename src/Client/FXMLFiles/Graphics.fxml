@@ -6,16 +6,16 @@
 <?import javafx.scene.layout.*?>
 <?import java.net.URL?>
 <GridPane xmlns:fx="http://javafx.com/fxml"
-          prefHeight="600" prefWidth="1000" styleClass="simpleDark" alignment="CENTER" vgap="50">
+          prefHeight="600" prefWidth="1000" styleClass="simpleDark" alignment="CENTER" vgap="20">
     <!-- Applying Style Sheet -->
         <stylesheets>
             <URL value="@../../SimpleDark.css" />
         </stylesheets>
 
     <!-- Header -->
-    <HBox alignment="CENTER" GridPane.rowIndex="0" GridPane.columnIndex="0">
+    <VBox alignment="BOTTOM_CENTER" GridPane.rowIndex="0" GridPane.columnIndex="0">
         <Label text="Game Results:" style="-fx-font-size: 80;" styleClass="simpleDarkTitle"/>
-    </HBox>
+    </VBox>
     <!-- PVP -->
     <HBox alignment="CENTER" GridPane.rowIndex="1" spacing = "100">
         <HBox GridPane.columnIndex="0" spacing="100">
@@ -41,6 +41,6 @@
         <Label fx:id="outcome" text="Bottom Text"  style="-fx-font-size: 40;" styleClass="simpleDarkTitle"/>
     </HBox>
     <HBox alignment="CENTER" GridPane.rowIndex="3" GridPane.columnIndex="0">
-        <Button text="Exit" onAction="#exit" styleClass="simpleDarkButton"/>
+        <Button text="Exit" fx:id="exit" styleClass="simpleDarkButton"/> <!--onAction="#exit"-->
     </HBox>
 </GridPane>
