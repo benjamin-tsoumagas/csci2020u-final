@@ -1,7 +1,11 @@
 **Project Information**
 -
 This project is a multi-threaded Rock-Paper-Scissors game.
-This project was made by Andy Wang, Benjamin Tsoumagas - 100751395, Matthew Sharp - 100748071, and Sam Shard.
+Contributors:
+Andy Wang - 100751519
+Benjamin Tsoumagas - 100751395
+Matthew Sharp - 100748071
+Sam Shard 
 
 **Improvements**
 -

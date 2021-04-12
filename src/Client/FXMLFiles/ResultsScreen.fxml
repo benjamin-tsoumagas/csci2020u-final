@@ -3,7 +3,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import java.net.URL?>
-<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
 
 <GridPane xmlns:fx="http://javafx.com/fxml" vgap="50" hgap="50" alignment="CENTER"
           prefHeight="600.0" prefWidth="1000.0" styleClass="simpleDark">
@@ -14,30 +15,13 @@
 
     <!-- Results Ui -->
     <Label text="This is testing text" fx:id="titleLabel" GridPane.rowIndex="0" GridPane.columnIndex="0" GridPane.columnSpan="3" styleClass="simpleDarkTitle"/>
-    <TableView fx:id="gameDataTableView" GridPane.rowIndex="1" GridPane.columnIndex="0" GridPane.columnSpan="3" prefHeight="300" styleClass="simpleDarkList">
-        <columns>
-            <TableColumn text="Player1" prefWidth="100">
-                <cellValueFactory>
-                    <PropertyValueFactory property="player1Username"/>
-                </cellValueFactory>
-            </TableColumn>
-            <TableColumn text="Player2" prefWidth="100">
-                <cellValueFactory>
-                    <PropertyValueFactory property="player2Username"/>
-                </cellValueFactory>
-            </TableColumn>
-            <TableColumn text="Winner" prefWidth="100">
-                <cellValueFactory>
-                    <PropertyValueFactory property="winnerUsername"/>
-                </cellValueFactory>
-            </TableColumn>
-            <TableColumn text="Time" prefWidth="100">
-                <cellValueFactory>
-                    <PropertyValueFactory property="timeOfRound"/>
-                </cellValueFactory>
-            </TableColumn>
-        </columns>
-    </TableView>
+    <HBox GridPane.rowIndex="1" GridPane.columnIndex="0" GridPane.columnSpan="3" alignment="CENTER">
+        <ImageView>
+            <image>
+                <Image preserveRatio="true" url="@/icon.jpg" />
+            </image>
+        </ImageView>
+    </HBox>
     <Button text="Exit Game" fx:id="exitButton" GridPane.rowIndex="2" GridPane.columnIndex="0" styleClass="simpleDarkButton"/>
     <Button text="Save Log" fx:id="saveButton" GridPane.rowIndex="2" GridPane.columnIndex="1" styleClass="simpleDarkButton"/>
     <Button text="Rematch" fx:id="rematchButton" GridPane.rowIndex="2" GridPane.columnIndex="2" styleClass="simpleDarkButton"/>
