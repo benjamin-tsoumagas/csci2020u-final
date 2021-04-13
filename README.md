@@ -7,10 +7,6 @@ Benjamin Tsoumagas - 100751395
 Matthew Sharp - 100748071
 Sam Shard - 100745640
 
-**Improvements**
--
-
-
 **How to run:**
 -
 1. Go to https://gluonhq.com/products/javafx/ and download the JavaFX x64 SDK for Windows/Mac/Linux depending on your operating system.
