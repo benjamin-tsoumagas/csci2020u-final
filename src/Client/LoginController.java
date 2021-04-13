@@ -9,6 +9,10 @@ import javafx.stage.Stage;
 
 import java.time.chrono.MinguoChronology;
 
+/**
+ * This class will handle the UI for the login screen, saving the entered username and
+ * will call the MainClientController Class
+ */
 public class LoginController {
     @FXML TextField usernameInput;
     //this is just a simple controller class for loading the login screen for player
@@ -28,13 +32,18 @@ public class LoginController {
         }
     }
 
+    /**
+     * This method will retrieve the inputted username and will set up the "Play" screen
+     * Then will call the MainClientController class
+     */
     public void login(){
-        String username = usernameInput.getText();
+        String username = usernameInput.getText(); // sets the username
         if (username == null || username.length()==0){
             warnUser("Username field can't be empty");
             return;
         }
 
+        // Sets up the next stage
         try{
             Stage currentStage = (Stage) usernameInput.getScene().getWindow();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLFiles/MainClientUi.fxml"));
@@ -42,7 +51,7 @@ public class LoginController {
             loader.setController(controller);
 
             currentStage.setScene(new Scene(loader.load()));
-            controller.initData(username);
+            controller.initData(username); // calls the MainClientController class
         }catch(Exception e){
             e.printStackTrace();
         }

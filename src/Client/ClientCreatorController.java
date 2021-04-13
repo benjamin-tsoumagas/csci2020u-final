@@ -5,6 +5,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ * Used to display the login screen for Rock Paper Scissors - Player enters name UI
+ */
 public class ClientCreatorController {
 
     public void createNewClient(){

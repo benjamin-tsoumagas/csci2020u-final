@@ -6,8 +6,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ * Client class that begins the program and creates the new connections to the server
+ */
 public class ClientTester extends Application {
-    //this is the class that your jdk should be configured to run as application
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -18,6 +20,10 @@ public class ClientTester extends Application {
         primaryStage.show();
     }
 
+    /**
+     * Launches the initial UI
+     * @param args - Command line Arguments
+     */
     public static void main(String[] args) {
         launch(args);
     }
