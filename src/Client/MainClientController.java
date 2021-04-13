@@ -129,14 +129,21 @@ public class MainClientController {
                         System.out.println("Draw!");
                         winner = "Draw";
                     }
-                    //save the outcome of the current round and win history to gameLog.txt
-                    openGraphics(); // Opens graphics component
-                    save(players); // Automatically calls save function
+                    if (players[0].equalsIgnoreCase(players[1])){ // conditional if a single client enters two moves
+                        validNames=false;
+                    } else { //save the outcome of the current round and win history to gameLog.txt
+                        openGraphics(); // Opens graphics component
+                        save(players); // Automatically calls save function
+                    }
                 } else { // If only one player has selected a move
                     System.err.println("Please wait until the other player has made a move");
                 }
             } catch (IOException e) { // Error if cannot read from Handler
                 System.err.println("Error reading from Handler");
+            }
+            if (validNames == false){ // if a boolean that verifies a move is false, then close the program
+                System.err.println("You entered the more than one command. Please run the program again properly.");
+                System.exit(0);
             }
         } else { // If action is not recognized
             System.out.println("No such action "+actionName);
@@ -315,7 +322,7 @@ public class MainClientController {
             if(winner.equalsIgnoreCase("Draw")){
                 line = "This round is a draw \n";
             } else {
-                line = "The Winner of this Round is: " + winner + "\n";
+                line = "The Winner of this Round is: " + winner + " (" + move[0] + " vs. " + move[1] + ")\n";
             }
             //Server needed to get wins for player 1
             networkOut.println("GETWIN " + players[0]);
