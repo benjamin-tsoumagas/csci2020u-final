@@ -7,6 +7,19 @@ Benjamin Tsoumagas - 100751395
 Matthew Sharp - 100748071
 Sam Shard - 100745640
 
+Create client screen
+![alt-text](https://github.com/benjamin-tsoumagas/csci2020u-final/blob/main/README_images/create_client.png?raw=true)
+Login screen
+![alt-text](https://github.com/benjamin-tsoumagas/csci2020u-final/blob/main/README_images/login.png?raw=true)
+Welcome screen
+![alt-text](https://github.com/benjamin-tsoumagas/csci2020u-final/blob/main/README_images/welcome.png?raw=true)
+Choose action screen
+![alt-text](https://github.com/benjamin-tsoumagas/csci2020u-final/blob/main/README_images/choose_action.png?raw=true)
+Winner results screen
+![alt-text](https://github.com/benjamin-tsoumagas/csci2020u-final/blob/main/README_images/results_win.png?raw=true)
+Draw results screen
+![alt-text](https://github.com/benjamin-tsoumagas/csci2020u-final/blob/main/README_images/results_draw.png?raw=true)
+
 **How to run:**
 -
 1. Go to https://gluonhq.com/products/javafx/ and download the JavaFX x64 SDK for Windows/Mac/Linux depending on your operating system.
