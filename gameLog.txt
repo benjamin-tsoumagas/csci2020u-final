@@ -1,3 +1,3 @@
-The Winner of this Round is: A
-A has 1 wins.
-Z has 0 wins.
+The Winner of this Round is: Sam (paper vs. scissors)
+Ben has 2 wins.
+Sam has 1 wins.
