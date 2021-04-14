@@ -1,6 +1,6 @@
 **Project Information**
 -
-This project is a multi-threaded Rock-Paper-Scissors game.
+This project is a multi-threaded Rock-Paper-Scissors game. Users can run a Rock Paper Scissors server that hosts up to two players that can choose their own usernames, have their match results stored/displayed, and can exit using the user interface.
 Contributors:
 Andy Wang - 100751519
 Benjamin Tsoumagas - 100751395
@@ -32,6 +32,7 @@ Draw results screen
 8. Open this project using IntelliJ once the project is cloned and go to Run>Edit Configurations
 9. Set up configurations for ClientTester and ServerTester, ClientTester needs this virtual machine argument: --module-path "***" --add-modules javafx.controls,javafx.fxml
    *** represents your path to your javafx sdk library
+10. Before running ClientTester ensure ServerTester is running.
    (For any issues running the project with IntelliJ, please refer to this YouTube video by Bro Code https://youtu.be/Ope4icw6bVk?list=LL)
 
 
